@@ -1,9 +1,8 @@
-import dynamic from "next/dynamic";
 
-const HeatmapPage = dynamic(() => import("../Components/heatmap"), {
-  ssr: false, // 🔥 MUST HAVE — prevents Vercel build error
-});
+
+import HeatmapPage from "../Components/heatmap";
 
 export default function heatmap() {
   return <HeatmapPage />;
 }
+
