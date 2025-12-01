@@ -34,7 +34,6 @@ export default function Support() {
 
       <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 mb-4 gap-3">
 
-        {/* Row 1 group */}
         <div className="flex items-center gap-3 flex-wrap">
           <span className="text-sm text-gray-600">Sort by</span>
 
@@ -62,7 +61,6 @@ export default function Support() {
 
         </div>
 
-        {/* Row 2: Status (moves down only on small screens) */}
         <div className="relative">
           <button
             onClick={() => setStatusOpen(!statusOpen)}
