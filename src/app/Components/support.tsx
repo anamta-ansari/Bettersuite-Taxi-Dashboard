@@ -21,7 +21,7 @@ export default function Support() {
         <p className="text-sm text-gray-500">Rider and driver Complaints</p>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-center gap-4 mb-4">
+      <div className="flex flex-col sm:flex-row  gap-4 mb-4">
         <div className="flex-1 flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-4 py-2">
           <Search className="w-5 h-5 text-gray-400" />
           <input type="text" placeholder="Search..." className="flex-1 outline-none text-sm" />
