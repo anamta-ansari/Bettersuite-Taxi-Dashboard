@@ -86,11 +86,19 @@ const items: SidebarItem[] = [
       { title: "Driver", url: "/accounting/driver" },
     ],
   },
+   {
+    title: "Cab",
+    dropdown: true,
+    icon: FiDollarSign,
+    children: [
+      { title: "Services", url: "/cab/services" },
+      { title: "Vehicles", url: "/cab/vehicles" },
+    ],
+  },
 
   { title: "SOS", url: "/sos", icon: FiAlertCircle },
   { title: "Heat Map", url: "/heatmap", icon: FiMap },
   { title: "Zones", url: "/zones", icon: FiGrid },
-  { title: "Services", url: "/services", icon: FiPackage },
   { title: "Support", url: "/support", icon: FiLifeBuoy },
   { title: "Fleets", url: "/fleets", icon: FiTruck },
 
@@ -117,9 +125,9 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="lg:fixed lg:top-20 lg:left-0 lg:h-[calc(100vh-5rem)] lg:w-64 w-full bg-white shadow-none lg:shadow">
+    <Sidebar className="lg:fixed lg:top-20 lg:left-0 lg:h-[calc(100vh-5rem)] lg:w-60 w-full bg-white shadow-none lg:shadow">
       <SidebarHeader />
-      <SidebarContent>
+      <SidebarContent >
         <SidebarGroup>
           <SidebarGroupLabel className="text-[18px] ml-3 mb-8 font-normal">
             Better Taxi
@@ -131,7 +139,7 @@ export function AppSidebar() {
                 <SidebarMenuItem key={item.title}>
                   {item.dropdown ? (
                     <details className="group mb-2">
-                      <summary className="flex items-center justify-between gap-2 cursor-pointer py-2 px-2 rounded-md hover:text-blue-500">
+                      <summary className="flex items-center justify-between gap-2 cursor-pointer py-2 px-2 rounded-md hover:text-blue-800">
                         <span className="flex items-center gap-2 text-[16px]">
                           <item.icon className="text-lg" />
                           {item.title}
@@ -143,7 +151,7 @@ export function AppSidebar() {
                         <ul className="list-disc list-outside space-y-2">
                           {item.children.map((sub) => (
                             <li key={sub.title}>
-                              <a href={sub.url} className={`block text-[15px] px-2 py-1 rounded-md hover:text-blue-600 ${pathname === sub.url ? "text-blue-600 font-semibold" : "text-gray-700"}`}>
+                              <a href={sub.url} className={`block text-[15px] px-2 py-1 rounded-md hover:text-blue-800 ${pathname === sub.url ? "text-blue-800 font-semibold" : "text-gray-700"}`}>
                                 {sub.title}
                               </a>
                             </li>
@@ -153,7 +161,7 @@ export function AppSidebar() {
                     </details>
                   ) : (
                     <SidebarMenuButton asChild>
-                      <a href={item.url} className={`flex items-center gap-2 px-2 py-2 rounded-md transition-colors hover:text-blue-600 ${pathname === item.url ? "bg-blue-600 text-white" : "text-gray-800"}`}>
+                      <a href={item.url} className={`flex items-center gap-2 px-2 py-2 rounded-md transition-colors hover:text-blue-800 ${pathname === item.url ? "bg-blue-600 text-white" : "text-gray-800"}`}>
                         <item.icon className="text-lg" />
                         <span className="text-[16px]">{item.title}</span>
                       </a>

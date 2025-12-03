@@ -36,10 +36,10 @@ export default function Zones() {
   // Filter zones
   const filteredZones = zones.filter((zone) => {
     const matchesSearch = zone.name.toLowerCase().includes(searchQuery.toLowerCase())
-    const matchesFilter = 
+    const matchesFilter =
       activeFilter === "all" ? true :
-      activeFilter === "active" ? zone.status :
-      !zone.status
+        activeFilter === "active" ? zone.status :
+          !zone.status
     return matchesSearch && matchesFilter
   })
 
@@ -88,40 +88,37 @@ export default function Zones() {
 
       {/* Filters */}
       <div className="bg-white border-b px-6 py-4">
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row items-center justify-between">
           <div className="flex items-center gap-6">
             <button
               onClick={() => setActiveFilter("all")}
-              className={`text-sm ${
-                activeFilter === "all"
+              className={`text-sm ${activeFilter === "all"
                   ? "text-gray-900 font-medium border-b-2 border-gray-900 pb-1"
                   : "text-gray-500"
-              }`}
+                }`}
             >
               All ({allCount})
             </button>
             <button
               onClick={() => setActiveFilter("active")}
-              className={`text-sm ${
-                activeFilter === "active"
+              className={`text-sm ${activeFilter === "active"
                   ? "text-gray-900 font-medium border-b-2 border-gray-900 pb-1"
                   : "text-gray-500"
-              }`}
+                }`}
             >
               Active ({activeCount})
             </button>
             <button
               onClick={() => setActiveFilter("deactive")}
-              className={`text-sm ${
-                activeFilter === "deactive"
+              className={`text-sm ${activeFilter === "deactive"
                   ? "text-gray-900 font-medium border-b-2 border-gray-900 pb-1"
                   : "text-gray-500"
-              }`}
+                }`}
             >
               Deactive ({deactiveCount})
             </button>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 pt-3">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
@@ -137,157 +134,167 @@ export default function Zones() {
       </div>
 
       {/* Actions Bar */}
-      <div className="bg-white px-6 py-3 flex items-center gap-3 border-b">
-        <div className="relative">
-          <select
-            value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(Number(e.target.value))}
-            className="appearance-none pl-3 pr-8 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:border-blue-500"
-          >
-            <option value={15}>15</option>
-            <option value={25}>25</option>
-            <option value={50}>50</option>
-            <option value={100}>100</option>
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+      <div className="bg-white px-6 py-3 border-b flex flex-col sm:flex-row sm:items-center sm:gap-3 gap-3">
+
+        <div className="flex flex-col sm:flex-row sm:gap-3 gap-3 w-full">
+          <div className="relative w-full sm:w-auto">
+            <select
+              value={itemsPerPage}
+              onChange={(e) => setItemsPerPage(Number(e.target.value))}
+              className="appearance-none pl-3 pr-8 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:border-blue-500 w-full"
+            >
+              <option value={15}>15</option>
+              <option value={25}>25</option>
+              <option value={50}>50</option>
+              <option value={100}>100</option>
+            </select>
+            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          </div>
+
+          <div className="relative w-full sm:w-auto">
+            <select className="appearance-none pl-3 pr-8 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:border-blue-500 w-full">
+              <option>Bulk actions</option>
+              <option>Delete selected</option>
+              <option>Activate selected</option>
+              <option>Deactivate selected</option>
+            </select>
+            <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+          </div>
         </div>
 
-        <div className="relative">
-          <select className="appearance-none pl-3 pr-8 py-1.5 border border-gray-300 rounded text-sm focus:outline-none focus:border-blue-500">
-            <option>Bulk actions</option>
-            <option>Delete selected</option>
-            <option>Activate selected</option>
-            <option>Deactivate selected</option>
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400 pointer-events-none" />
+        <div className="w-full sm:w-auto mt-2 sm:mt-0">
+          <button className="px-4 py-1.5 border-2 border-blue-600 text-blue-600 rounded text-sm font-medium hover:bg-blue-50 w-full sm:w-auto">
+            Apply
+          </button>
         </div>
 
-        <button className="px-4 py-1.5 border-2 border-blue-600 text-blue-600 rounded text-sm font-medium hover:bg-blue-50">
-          Apply
-        </button>
-
-        <div className="ml-auto text-sm text-gray-600">
+        {/* Items count */}
+        <div className="hidden sm:block ml-auto text-sm text-gray-600">
           {filteredZones.length} Items
         </div>
+
       </div>
+
 
       {/* Table */}
       <div className="bg-white mx-6 my-4 rounded-lg border overflow-hidden">
-        <table className="w-full">
-          <thead className="bg-gray-50 border-b">
-            <tr>
-              <th className="w-12 px-6 py-3">
-                <input
-                  type="checkbox"
-                  checked={selectedZones.length === filteredZones.length && filteredZones.length > 0}
-                  onChange={toggleAll}
-                  className="w-4 h-4 rounded border-gray-300"
-                />
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                <div className="flex items-center gap-1">
-                  Name
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                <div className="flex items-center gap-1">
-                  Currency
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                <div className="flex items-center gap-1">
-                  Distance Type
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                <div className="flex items-center gap-1">
-                  Status
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </th>
-              <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
-                <div className="flex items-center gap-1">
-                  Created At
-                  <ChevronDown className="w-4 h-4" />
-                </div>
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-200">
-            {filteredZones.length === 0 ? (
+
+        <div className="overflow-x-auto w-full">
+          <table className="min-w-max w-full border-collapse text-left">
+            <thead className="bg-gray-50 border-b">
               <tr>
-                <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
-                  No zones found. Create your first zone!
-                </td>
+                <th className="w-12 px-6 py-3">
+                  <input
+                    type="checkbox"
+                    checked={selectedZones.length === filteredZones.length && filteredZones.length > 0}
+                    onChange={toggleAll}
+                    className="w-4 h-4 rounded border-gray-300"
+                  />
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                  <div className="flex items-center gap-1">
+                    Name
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                  <div className="flex items-center gap-1">
+                    Currency
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                  <div className="flex items-center gap-1">
+                    Distance Type
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                  <div className="flex items-center gap-1">
+                    Status
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </th>
+                <th className="px-6 py-3 text-left text-sm font-medium text-gray-700">
+                  <div className="flex items-center gap-1">
+                    Created At
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                </th>
               </tr>
-            ) : (
-              filteredZones.map((zone) => (
-                <tr key={zone.id} className="hover:bg-gray-50">
-                  <td className="px-6 py-4">
-                    <input
-                      type="checkbox"
-                      checked={selectedZones.includes(zone.id)}
-                      onChange={() => toggleZone(zone.id)}
-                      className="w-4 h-4 rounded border-gray-300"
-                    />
-                  </td>
-                  <td className="px-6 py-4">
-                    <div className="text-sm text-gray-900">{zone.name}</div>
-                    <div className="flex items-center gap-3 mt-1">
-                      <button 
-                        onClick={() => router.push(`/zones/${zone.id}/edit`)}
-                        className="text-sm text-gray-600 hover:text-blue-600"
-                      >
-                        Edit
-                      </button>
-                      <button
-                        onClick={() => handleDelete(zone.id)}
-                        className="text-sm text-red-600 hover:text-red-700"
-                      >
-                        Delete Permanently
-                      </button>
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-700">
-                    {zone.currency}
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-700">
-                    {zone.distanceType}
-                  </td>
-                  <td className="px-6 py-4">
-                    <button
-                      onClick={() => {
-                        const updatedZones = zones.map(z => 
-                          z.id === zone.id ? { ...z, status: !z.status } : z
-                        )
-                        setZones(updatedZones)
-                        localStorage.setItem("zones", JSON.stringify(updatedZones))
-                      }}
-                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
-                        zone.status ? "bg-blue-600" : "bg-gray-300"
-                      }`}
-                    >
-                      <span
-                        className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
-                          zone.status ? "translate-x-6" : "translate-x-1"
-                        }`}
-                      />
-                    </button>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-700">
-                    {zone.createdAt}
+            </thead>
+            <tbody className="divide-y divide-gray-200">
+              {filteredZones.length === 0 ? (
+                <tr>
+                  <td colSpan={6} className="px-6 py-12 text-center text-gray-500">
+                    No zones found. Create your first zone!
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+              ) : (
+                filteredZones.map((zone) => (
+                  <tr key={zone.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4">
+                      <input
+                        type="checkbox"
+                        checked={selectedZones.includes(zone.id)}
+                        onChange={() => toggleZone(zone.id)}
+                        className="w-4 h-4 rounded border-gray-300"
+                      />
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="text-sm text-gray-900">{zone.name}</div>
+                      <div className="flex items-center gap-3 mt-1">
+                        <button
+                          onClick={() => router.push(`/zones/${zone.id}/edit`)}
+                          className="text-sm text-gray-600 hover:text-blue-600"
+                        >
+                          Edit
+                        </button>
+                        <button
+                          onClick={() => handleDelete(zone.id)}
+                          className="text-sm text-red-600 hover:text-red-700"
+                        >
+                          Delete Permanently
+                        </button>
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-700">
+                      {zone.currency}
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-700">
+                      {zone.distanceType}
+                    </td>
+                    <td className="px-6 py-4">
+                      <button
+                        onClick={() => {
+                          const updatedZones = zones.map(z =>
+                            z.id === zone.id ? { ...z, status: !z.status } : z
+                          )
+                          setZones(updatedZones)
+                          localStorage.setItem("zones", JSON.stringify(updatedZones))
+                        }}
+                        className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${zone.status ? "bg-blue-600" : "bg-gray-300"
+                          }`}
+                      >
+                        <span
+                          className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${zone.status ? "translate-x-6" : "translate-x-1"
+                            }`}
+                        />
+                      </button>
+                    </td>
+                    <td className="px-6 py-4 text-sm text-gray-700">
+                      {zone.createdAt}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
 
-     
+
+
     </div>
   )
 }

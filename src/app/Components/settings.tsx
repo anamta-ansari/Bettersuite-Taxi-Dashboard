@@ -40,9 +40,9 @@ export default function Settings() {
           <p className="text-gray-600">Configure your account settings and preferences</p>
         </div>
 
-        <div className="flex gap-6">
+        <div className="flex flex-col sm:flex-row gap-6">
           {/* Sidebar */}
-          <div className="w-80 shrink-0">
+          <div className="w-full sm:w-65 shrink-0">
             <div className="bg-white rounded-lg shadow-sm overflow-hidden">
               {menuItems.map((item) => {
                 const Icon = item.icon;
@@ -65,7 +65,7 @@ export default function Settings() {
           </div>
 
           {/* Main Content */}
-          <div className="flex-1">
+          <div className="w-full sm:flex-1">
             <div className="bg-white rounded-lg shadow-sm p-8">
               <div className="flex justify-between items-center mb-8">
                 <h2 className="text-xl font-semibold text-gray-900">General Details</h2>

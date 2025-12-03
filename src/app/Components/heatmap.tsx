@@ -50,7 +50,6 @@ export default function HeatmapPage() {
       maxZoom: 18,
     }).addTo(map);
 
-    // Initialize with original gradient
     const heatmapLayer = createHeatmapLayer(originalGradient);
     heatmapLayer.addTo(map);
     heatmapLayerRef.current = heatmapLayer;
@@ -96,13 +95,13 @@ export default function HeatmapPage() {
         <div className="flex gap-3 mb-4">
           <button
             onClick={handleToggleHeatmap}
-            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
+            className=" px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
           >
             {showHeatmap ? "Hide Heatmap" : "Show Heatmap"}
           </button>
           <button
             onClick={handleChangeGradient}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition"
+            className=" px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition"
           >
             Change Gradient
           </button>

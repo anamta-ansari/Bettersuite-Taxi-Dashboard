@@ -12,7 +12,7 @@ export default function UserDropdown() {
       {/* Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-3 bg-gray-50 px-4 py-2 rounded-lg shadow hover:bg-gray-100 transition"
+        className="flex items-center gap-3 bg-gray-50 px-2 py-2 rounded-lg shadow hover:bg-gray-100 transition"
       >
         <FaUserCircle className="text-3xl text-gray-600" />
         <div className="text-left leading-tight">
@@ -28,7 +28,7 @@ export default function UserDropdown() {
 
       {/* Dropdown Menu */}
       {open && (
-        <div className="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg">
+        <div className="absolute right-0 mt-2 w-25 bg-white border border-gray-200 rounded-lg shadow-lg">
           <ul className="py-1">
             <li>
   <Link

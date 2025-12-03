@@ -25,7 +25,7 @@ const initialServices: Service[] = [
     type: "Cab",
     status: true,
     createdAt: "2025-04-24 03:50:10",
-    img: "/assets/cab-service.png", 
+    img: "/assets/cab-service.png",
   },
   {
     id: 2,
@@ -58,30 +58,28 @@ const initialServices: Service[] = [
 
 // Reusable Status Toggle Switch
 const StatusToggle: React.FC<{ initialStatus: boolean, serviceId: number }> = ({ initialStatus, serviceId }) => {
-    const [isActive, setIsActive] = useState(initialStatus);
-    
-    const toggleStatus = () => {
-        setIsActive(!isActive);
-        // Implement API call to update status here
-        console.log(`Service ${serviceId} status updated to: ${!isActive}`);
-    };
+  const [isActive, setIsActive] = useState(initialStatus);
 
-    return (
-        <button 
-            onClick={toggleStatus}
-            className={`relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none ${
-                isActive ? 'bg-blue-500' : 'bg-gray-300'
-            }`}
-        >
-            <span className="sr-only">Toggle Status</span>
-            <span 
-                aria-hidden="true" 
-                className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 ${
-                    isActive ? 'translate-x-5' : 'translate-x-0'
-                }`}
-            />
-        </button>
-    );
+  const toggleStatus = () => {
+    setIsActive(!isActive);
+    // Implement API call to update status here
+    console.log(`Service ${serviceId} status updated to: ${!isActive}`);
+  };
+
+  return (
+    <button
+      onClick={toggleStatus}
+      className={`relative inline-flex flex-shrink-0 h-6 w-11 border-2 border-transparent rounded-full cursor-pointer transition-colors ease-in-out duration-200 focus:outline-none ${isActive ? 'bg-blue-500' : 'bg-gray-300'
+        }`}
+    >
+      <span className="sr-only">Toggle Status</span>
+      <span
+        aria-hidden="true"
+        className={`pointer-events-none inline-block h-5 w-5 rounded-full bg-white shadow transform ring-0 transition ease-in-out duration-200 ${isActive ? 'translate-x-5' : 'translate-x-0'
+          }`}
+      />
+    </button>
+  );
 };
 
 // --- Main Component ---
@@ -116,43 +114,42 @@ export default function Services() {
   };
 
   const toggleServiceSelection = (id: number) => {
-    setSelectedServices(prev => 
+    setSelectedServices(prev =>
       prev.includes(id) ? prev.filter(serviceId => serviceId !== id) : [...prev, id]
     );
   };
-    
+
   return (
     <div className="p-6 bg-gray-50 min-h-screen">
       <h1 className="text-2xl font-semibold mb-6 text-gray-800">Services</h1>
-      
+
       {/* Tabs and Search */}
-      <div className="flex items-start justify-between mb-4">
+      <div className="flex flex-col sm:flex-row py-2 items-start justify-between mb-4">
         {/* Tabs */}
         <div className="flex gap-4 text-sm pt-1">
           {['all', 'active', 'deactive'].map((tabKey) => (
             <button
               key={tabKey}
               onClick={() => setActiveTab(tabKey as Tab)}
-              className={`capitalize pb-1 ${
-                activeTab === tabKey
+              className={`capitalize pb-1 ${activeTab === tabKey
                   ? 'font-semibold text-blue-600 border-b-2 border-blue-600'
                   : 'text-gray-500 hover:text-blue-600'
-              }`}
+                }`}
             >
               {tabKey} ({counts[tabKey as Tab]})
             </button>
           ))}
         </div>
-        
+
         {/* Search Input */}
-        <div className="flex border rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-colors">
+        <div className="flex  sm:w-auto border mt-2 rounded-lg overflow-hidden focus-within:ring-2 focus-within:ring-blue-500 transition-colors">
           <input
             type="text"
             placeholder="Search"
             className="px-3 py-2 w-64 text-sm focus:outline-none"
           />
-          <button className="bg-white text-gray-500 hover:text-blue-600 p-2 border-l">
-            <Search className="w-4 h-4" />
+          <button className="bg-white text-gray-500 py-2 px-1 hover:text-blue-600  border-l">
+            <Search className="w-4 h-4 " />
           </button>
         </div>
       </div>
@@ -186,7 +183,7 @@ export default function Services() {
         </div>
 
         {/* Item Count */}
-        <div className="text-sm text-gray-500">
+        <div className="text-sm hidden sm:block text-gray-500">
           {filteredServices.length} Items
         </div>
       </div>
@@ -194,18 +191,18 @@ export default function Services() {
       {/* Table */}
       <div className="bg-white shadow-lg rounded-lg overflow-x-auto">
         <table className="min-w-full divide-y divide-gray-200 text-sm">
-          {/* Table Header (Hydration Fix Applied) */}
+          {/* Table Header  */}
           <thead className="bg-gray-50">
             <tr><th className="px-3 py-3 w-10">
-                <button onClick={toggleSelectAll} className="text-gray-500 hover:text-blue-600">
-                  {selectedServices.length === filteredServices.length && filteredServices.length > 0 ? (
-                    <CheckSquare className="w-4 h-4" />
-                  ) : (
-                    <Square className="w-4 h-4" />
-                  )}
-                </button>
-              </th>
-              
+              <button onClick={toggleSelectAll} className="text-gray-500 hover:text-blue-600">
+                {selectedServices.length === filteredServices.length && filteredServices.length > 0 ? (
+                  <CheckSquare className="w-4 h-4" />
+                ) : (
+                  <Square className="w-4 h-4" />
+                )}
+              </button>
+            </th>
+
               {/* Other Headers */}
               {['Title', 'Type', 'Status', 'Created At'].map(header => (
                 <th
@@ -222,11 +219,11 @@ export default function Services() {
               <th className="px-4 py-3 w-12"></th></tr>
           </thead>
 
-          {/* Table Body (Hydration Fix Applied) */}
+          {/* Table Body  */}
           <tbody className="bg-white divide-y divide-gray-100">
             {filteredServices.map((service) => (
-              <tr 
-                key={service.id} 
+              <tr
+                key={service.id}
                 className={`hover:bg-gray-50 ${selectedServices.includes(service.id) ? 'bg-emerald-50/50' : ''}`}
               >
                 {/* Selection Checkbox */}
@@ -242,15 +239,13 @@ export default function Services() {
                 {/* Title and Image */}
                 <td className="px-4 py-3">
                   <div className="flex items-center gap-3">
-                    {/* Image: Rounded-full applied here */}
                     <div className="relative w-10 h-10 flex-shrink-0 bg-gray-100 rounded-full overflow-hidden">
                       <Image
                         src={service.img}
                         alt={service.title}
                         width={40}
                         height={40}
-                        // KEY CHANGE: rounded-full for circular image
-                        className="rounded-full object-cover" 
+                        className="rounded-full object-cover"
                       />
                     </div>
                     <div>
@@ -279,12 +274,12 @@ export default function Services() {
                 <td className="px-4 py-3 text-gray-500 whitespace-nowrap">
                   {service.createdAt}
                 </td>
-                
+
                 {/* Actions */}
                 <td className="px-4 py-3 text-right">
-                    <button className="text-gray-500 hover:text-blue-600">
-                        <MoreVertical className="w-4 h-4" />
-                    </button>
+                  <button className="text-gray-500 hover:text-blue-600">
+                    <MoreVertical className="w-4 h-4" />
+                  </button>
                 </td>
               </tr>
             ))}
