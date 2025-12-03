@@ -18,10 +18,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
     { title: "Drivers", dropdown: true, icon: FiUsers, children: [{ title: "List", url: "/driver/list" }, { title: "pending verification", url: "/driver/pending-verification" }, { title: "settings", url: "/driver/settings" }] },
     { title: "Marketing", dropdown: true, icon: FiBarChart2, children: [{ title: "coupons", url: "/marketing/coupons" }, { title: "Gift Cards", url: "/marketing/giftcards" }, { title: "Announcement", url: "/marketing/annoucement" }] },
     { title: "Payout", dropdown: true, icon: FiDollarSign, children: [ { title: "Payout Methods", url: "/payout/payout-methods" }, { title: "Driver Payout", url: "/payout/driver-payout" }] },
-<<<<<<< HEAD
     { title: "Cab", dropdown: true, icon: FiAlertCircle, children: [ { title: "Services", url: "/cab/services" }, { title: "Vehicles", url: "/cab/vehicles" }] },
-=======
->>>>>>> a403f1b3d8686ebe5d5e375a95b8f3475231ffe8
     { title: "Dispatcher", url: "/dispatcher", icon: FiClipboard, dropdown: false },
     { title: "Orders", url: "/orders", icon: FiShoppingCart, dropdown: false },
     { title: "Customers", url: "/customers", icon: FiUserCheck, dropdown: false },

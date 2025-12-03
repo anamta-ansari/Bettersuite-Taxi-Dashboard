@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useEffect, useState, useRef } from "react";
@@ -72,11 +73,6 @@ export default function HeatmapPage() {
         return;
       }
 
-<<<<<<< HEAD
-    const heatmapLayer = createHeatmapLayer(originalGradient);
-    heatmapLayer.addTo(map);
-    heatmapLayerRef.current = heatmapLayer;
-=======
       const map = new google.maps.Map(mapContainerRef.current, {
         center: { lat: 24.8607, lng: 67.0011 },
         zoom: 12,
@@ -101,7 +97,6 @@ export default function HeatmapPage() {
     };
 
     initMap();
->>>>>>> a403f1b3d8686ebe5d5e375a95b8f3475231ffe8
   }, []);
 
   // Toggle heatmap visibility
@@ -135,24 +130,16 @@ export default function HeatmapPage() {
         <div className="flex gap-3 mb-4">
           <button
             onClick={handleToggleHeatmap}
-<<<<<<< HEAD
-            className=" px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition"
-=======
             disabled={isLoading}
             className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition disabled:opacity-50"
->>>>>>> a403f1b3d8686ebe5d5e375a95b8f3475231ffe8
           >
             {showHeatmap ? "Hide Heatmap" : "Show Heatmap"}
           </button>
 
           <button
             onClick={handleChangeGradient}
-<<<<<<< HEAD
-            className=" px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition"
-=======
             disabled={isLoading}
             className="px-4 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition disabled:opacity-50"
->>>>>>> a403f1b3d8686ebe5d5e375a95b8f3475231ffe8
           >
             Change Gradient
           </button>
