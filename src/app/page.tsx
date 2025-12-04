@@ -31,73 +31,73 @@ export default function Home() {
   ];
 
   return (
-    <main className="">
-      <h1 className="text-[32px] font-bold -mt-5">Hello World</h1>
+    <main className="dark:bg-black pl-2">
+      <h1 className="text-[32px] font-bold -mt-5">Home</h1>
       <p className="text-[16px] mt-5 mb-8"><span className="text-gray-500">Today is  </span> {formattedDate}</p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-1">
         {/* 1st - Total Orders */}
-        <div className="bg-white rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-gray-700 text-sm font-medium">Total Orders</h3>
-            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors">See More</button>
+            <h3 className="text-gray-700 text-sm font-medium dark:text-white">Total Orders</h3>
+            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors dark:text-white">See More</button>
           </div>
           <div className="flex items-center gap-3">
             <div className="bg-blue-100 rounded-full p-2.5">
               <Car className="w-5 h-5 text-blue-600" />
             </div>
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none">46024</span>
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none dark:text-white">46024</span>
           </div>
         </div>
 
         {/* 2nd - Total Revenue */}
-        <div className="bg-white rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-gray-700 text-sm font-medium">Total Revenue</h3>
-            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors">See More</button>
+            <h3 className="text-gray-700 text-sm font-medium dark:text-white">Total Revenue</h3>
+            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors dark:text-white">See More</button>
           </div>
           <div className="flex items-center gap-3">
             <div className="bg-green-100 rounded-full p-2.5">
-              <Car className="w-5 h-5 text-green-600" />
+              <Car className="w-5 h-5 text-green-600 " />
             </div>
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none">46024</span>
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none dark:text-white">46024</span>
           </div>
         </div>
 
         {/* 3rd - Active Drivers */}
-        <div className="bg-white rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
+        <div className="bg-white dark:bg-black rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-gray-700 text-sm font-medium">Active Drivers</h3>
-            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors">See More</button>
+            <h3 className="text-gray-700 text-sm font-medium dark:text-white">Active Drivers</h3>
+            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors dark:text-white">See More</button>
           </div>
           <div className="flex items-center gap-3">
             <div className="bg-purple-100 rounded-full p-2.5">
               <Car className="w-5 h-5 text-purple-600" />
             </div>
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none">46024</span>
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none dark:text-white">46024</span>
           </div>
         </div>
 
         {/* 4th - Active Customers */}
-        <div className="bg-white rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
+        <div className="bg-white dark:bg-black  rounded-2xl shadow-sm border px-3 sm:px-4 py-3 h-[100px] sm:h-[110px]">
           <div className="flex justify-between items-center mb-2">
-            <h3 className="text-gray-700 text-sm font-medium">Active Customers</h3>
-            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors">See More</button>
+            <h3 className="text-gray-700 text-sm font-medium dark:text-white">Active Customers</h3>
+            <button className="text-gray-500 text-xs hover:text-blue-600 transition-colors dark:text-white">See More</button>
           </div>
           <div className="flex items-center gap-3">
             <div className="bg-orange-100 rounded-full p-2.5">
               <Car className="w-5 h-5 text-orange-600" />
             </div>
-            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none">46024</span>
+            <span className="text-2xl sm:text-3xl font-semibold text-gray-800 leading-none dark:text-white">46024</span>
           </div>
         </div>
       </div>
 
       {/* online driver section start here */}
-      <div className="bg-white rounded-2xl shadow-sm mt-12 overflow-hidden">
+      <div className="bg-white dark:bg-black rounded-2xl shadow-sm mt-12 overflow-hidden">
         <div className="px-4 sm:px-5 pt-5 pb-3">
-          <h1 className="text-lg sm:text-xl font-semibold">Online Drivers</h1>
-          <p className="text-sm text-gray-400 mt-1">Online Drivers and Current Location</p>
+          <h1 className="text-lg sm:text-xl font-semibold dark:text-white">Online Drivers</h1>
+          <p className="text-sm text-gray-400 mt-1 dark:text-white">Online Drivers and Current Location</p>
         </div>
 
         {/* ----------------------------------------- */}
@@ -119,11 +119,11 @@ export default function Home() {
           {/* Drivers List Section */}
           <div className="w-full md:w-1/2 min-w-0 border-t md:border-t-0 md:border-l border-gray-200">
             <div className="bg-gray-100 border-b border-gray-300 py-3 px-4 sm:px-5">
-              <p className="text-sm sm:text-base font-medium text-gray-700">Online Drivers</p>
+              <p className="text-sm sm:text-base font-medium text-gray-700 dark:text-white">Online Drivers</p>
             </div>
             <div className="p-4 sm:p-5 max-h-[400px] overflow-y-auto">
               {/* Add your drivers list content here */}
-              <p className="text-gray-500 text-sm">Drivers list will appear here...</p>
+              <p className="text-gray-500 text-sm dark:text-white">Drivers list will appear here...</p>
             </div>
           </div>
         </div>
@@ -135,25 +135,25 @@ export default function Home() {
         {/* Header Section */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
           <div>
-            <p className="text-sm sm:text-base font-medium text-gray-800">
+            <p className="text-sm sm:text-base font-medium text-gray-800 dark:text-white">
               Active Orders
-              <span className="bg-blue-600 text-white px-2 sm:px-3 py-1 ml-2 rounded text-xs sm:text-sm font-semibold">
+              <span className="bg-blue-600  text-white px-2 sm:px-3 py-1 ml-2 rounded text-xs sm:text-sm font-semibold">
                 46028
               </span>
             </p>
           </div>
           <div className="flex flex-wrap gap-2 sm:gap-3">
-            <button className="text-blue-600 bg-white border border-gray-400 hover:bg-blue-50 rounded text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 transition-colors whitespace-nowrap">
+            <button className="text-blue-600 bg-white dark:bg-black border border-gray-400 hover:bg-blue-50 rounded text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 transition-colors whitespace-nowrap">
               Dispatch A Trip
             </button>
-            <button className="bg-white border border-gray-400 hover:bg-gray-50 rounded text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 transition-colors whitespace-nowrap">
+            <button className="bg-white border dark:bg-black border-gray-400 hover:bg-gray-50 rounded text-sm sm:text-base py-2 sm:py-3 px-3 sm:px-4 transition-colors whitespace-nowrap">
               View All
             </button>
           </div>
         </div>
 
         {/* Table Container with Horizontal Scroll */}
-        <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+        <div className="bg-white dark:bg-black rounded-lg shadow-sm border border-gray-200 overflow-hidden">
           <div className="overflow-x-auto">
             <div className="min-w-[800px]">
               <OrdersTable />

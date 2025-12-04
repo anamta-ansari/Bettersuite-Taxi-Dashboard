@@ -8,6 +8,7 @@ import Navbar from "./Components/Navbar";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./Components/app-sidebar";
 import { X } from "lucide-react";
+import { ThemeProvider } from "@/components/themeprovider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,6 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="overflow-x-hidden">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden `}>
+          <ThemeProvider>
 
         {/* -------- NAVBAR (HIDE ON LOGIN) -------- */}
         {!hideSidebar && (
@@ -83,6 +85,9 @@ export default function RootLayout({
             </>
           )}
         </SidebarProvider>
+
+      </ThemeProvider>
+
       </body>
     </html>
   );

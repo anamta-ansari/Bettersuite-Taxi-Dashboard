@@ -1,6 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+/* Tailwind layers - MUST be correct */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth transition for light/dark */
+html {
+  @apply transition-colors duration-300;
+}
+
+/* Default body theme */
+body {
+  @apply bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200;
+}
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {

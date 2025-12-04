@@ -3,15 +3,17 @@ import { useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
 import { Menu, X, ChevronDown } from "lucide-react";
 import UserDropdown from "./UserDropdown";
+import { ThemeToggleButton } from "./ThemeToggleButton";
 import { usePathname } from "next/navigation";
 import { FiHome, FiUsers, FiTruck, FiBarChart2, FiDollarSign, FiClipboard, FiShoppingCart, FiUserCheck, FiAlertCircle, FiLifeBuoy, FiLayers, FiSettings } from "react-icons/fi";
+import { useTheme } from "@/components/themeprovider";
 
 export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const [isDark, setIsDark] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const pathname = usePathname();
-
-  const toggleTheme = () => setIsDark(!isDark);
+ 
+  // const toggleTheme = () => setIsDark(!isDark);
 
   const menuItems = [
     { title: "Overview", url: "/", icon: FiHome, dropdown: false },
@@ -32,7 +34,7 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
 
   return (
     <>
- <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-50 shadow-sm">
+ <nav className="fixed top-0 left-0 right-0 z-50 bg-white border border-b-1 dark:border-b-gray-500 dark:bg-black dark:text-white">
   <div className="flex justify-between items-center px-4 sm:px-6 lg:px-8 h-16 sm:h-20 max-w-7xl mx-auto w-full">
     {/* Left Side */}
     <div className="flex items-center gap-3 min-w-0">
@@ -46,18 +48,13 @@ export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
           <Menu className="w-5 h-5 sm:w-6 sm:h-6 text-gray-700" />
         )}
       </button>
-      <h1 className="hidden lg:block text-2xl font-bold text-gray-800 whitespace-nowrap">BetterSuite</h1>
+      <h1 className="hidden lg:block text-2xl font-bold text-gray-800 whitespace-nowrap dark:text-white">BetterSuite</h1>
     </div>
 
     {/* Right Side */}
     <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
-      <button 
-        onClick={toggleTheme} 
-        className="hidden lg:flex items-center gap-2 px-3 py-2 bg-white border border-gray-200 rounded-full shadow-sm hover:bg-gray-50 transition-colors"
-      >
-        <FaSun className={`text-yellow-500 text-lg transition-opacity duration-300 ${isDark ? "opacity-30" : "opacity-100"}`} />
-        <FaMoon className={`text-gray-700 text-lg transition-opacity duration-300 ${isDark ? "opacity-100" : "opacity-30"}`} />
-      </button>
+      <ThemeToggleButton />
+
       <UserDropdown />
     </div>
   </div>

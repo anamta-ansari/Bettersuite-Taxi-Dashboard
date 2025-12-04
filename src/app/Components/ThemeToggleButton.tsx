@@ -1,0 +1,23 @@
+"use client";
+
+import { FaSun, FaMoon } from "react-icons/fa";
+import { useTheme } from "@/components/themeprovider";
+
+export function ThemeToggleButton() {
+  const { isDark, toggleTheme } = useTheme();
+
+  return (
+    <button
+      onClick={toggleTheme}
+      className="hidden lg:flex items-center gap-2 px-3 py-2
+      bg-white dark:bg-black 
+      border border-gray-300 dark:border-gray-600
+      rounded-full shadow-sm
+      hover:bg-gray-100 dark:hover:bg-gray-700
+      transition-colors"
+    >
+      <FaSun className={`text-yellow-400 dark:text-white ${isDark ? "opacity-30" : "opacity-100"}`} />
+      <FaMoon className={`text-gray-700 dark:text-white ${isDark ? "opacity-100" : "opacity-30"}`} />
+    </button>
+  );
+}

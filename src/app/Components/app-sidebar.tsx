@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 
 import {
@@ -16,34 +15,35 @@ import {
   SidebarMenuButton,
 } from "@/components/ui/sidebar";
 
-import { FiChevronDown, FiGrid, FiMap, FiPackage } from "react-icons/fi";
-
 import {
-  FiHome,
-  FiUsers,
-  FiTruck,
-  FiBarChart2,
-  FiDollarSign,
-  FiClipboard,
-  FiShoppingCart,
-  FiUserCheck,
-  FiAlertCircle,
-  FiLifeBuoy,
-  FiLayers,
-  FiSettings,
-} from "react-icons/fi";
+  LayoutDashboard,
+  Rocket,
+  CarTaxiFront,
+  BookOpenText,
+  User,
+  CircleUser,
+  ChartPie,
+  CircleDollarSign,
+  ChartColumn,
+  Megaphone,
+  Headphones,
+  Building,
+  Settings2,
+  Car,
+  Map,
+  LandPlot
+} from "lucide-react";
 
-type SidebarItem =
-  | { title: string; url: string; icon: any; dropdown?: false }
-  | { title: string; icon: any; dropdown: true; children: { title: string; url: string }[] };
+import { FiChevronDown, FiSettings } from "react-icons/fi";
 
-const items: SidebarItem[] = [
-  { title: "Overview", url: "/", icon: FiHome },
+const items = [
+  { title: "Overview", url: "/", icon: LayoutDashboard },
+  { title: "Dispatcher", url: "/dispatcher", icon: Rocket },
 
   {
     title: "Drivers",
     dropdown: true,
-    icon: FiUsers,
+    icon: CarTaxiFront,
     children: [
       { title: "List", url: "/driver/list" },
       { title: "Pending Verification", url: "/driver/pending-verification" },
@@ -51,61 +51,73 @@ const items: SidebarItem[] = [
     ],
   },
 
+  { title: "Orders", url: "/orders", icon: BookOpenText },
+  { title: "Customers", url: "/customers", icon: CircleUser },
+
   {
     title: "Marketing",
     dropdown: true,
-    icon: FiBarChart2,
+    icon: ChartPie,
     children: [
       { title: "Coupons", url: "/marketing/coupons" },
       { title: "Gift Cards", url: "/marketing/giftcards" },
-      { title: "Annoucment", url: "/marketing/annoucements" },
+      { title: "Annoucements", url: "/marketing/annoucements" },
     ],
   },
 
   {
     title: "Payout",
     dropdown: true,
-    icon: FiDollarSign,
+    icon: CircleDollarSign,
     children: [
       { title: "Payout Methods", url: "/payout/payout-methods" },
       { title: "Driver Payout", url: "/payout/driver-payout" },
     ],
   },
 
-  { title: "Dispatcher", url: "/dispatcher", icon: FiClipboard },
-  { title: "Orders", url: "/orders", icon: FiShoppingCart },
-  { title: "Customers", url: "/customers", icon: FiUserCheck },
-
   {
     title: "Accounting",
     dropdown: true,
-    icon: FiDollarSign,
+    icon: ChartColumn,
     children: [
       { title: "Admin", url: "/accounting/admin" },
       { title: "Customer", url: "/accounting/customer" },
       { title: "Driver", url: "/accounting/driver" },
     ],
   },
-   {
+
+  { title: "SOS", url: "/sos", icon: Megaphone },
+
+  {
+    title: "Users",
+    dropdown: true,
+    icon: User,
+    children: [
+      { title: "All Users", url: "/users/all-users" },
+      { title: "Add Users", url: "/users/add-users" },
+      { title: "Roles and Permissions", url: "/users/roles-permissions" },
+    ],
+  },
+
+  {
     title: "Cab",
     dropdown: true,
-    icon: FiDollarSign,
+    icon: Car,
     children: [
       { title: "Services", url: "/cab/services" },
       { title: "Vehicles", url: "/cab/vehicles" },
     ],
   },
 
-  { title: "SOS", url: "/sos", icon: FiAlertCircle },
-  { title: "Heat Map", url: "/heatmap", icon: FiMap },
-  { title: "Zones", url: "/zones", icon: FiGrid },
-  { title: "Support", url: "/support", icon: FiLifeBuoy },
-  { title: "Fleets", url: "/fleets", icon: FiTruck },
+  { title: "Heat Map", url: "/heatmap", icon: Map },
+  { title: "Zones", url: "/zones", icon: LandPlot },
+  { title: "Support", url: "/support", icon: Headphones },
+  { title: "Fleets", url: "/fleets", icon: Building },
 
   {
     title: "Management",
     dropdown: true,
-    icon: FiLayers,
+    icon: Settings2,
     children: [
       { title: "Cancel Reasons", url: "/management/teams" },
       { title: "Pricing", url: "/management/roles" },
@@ -125,11 +137,12 @@ export function AppSidebar() {
   const pathname = usePathname();
 
   return (
-    <Sidebar className="lg:fixed lg:top-20 lg:left-0 lg:h-[calc(100vh-5rem)] lg:w-60 w-full bg-white shadow-none lg:shadow">
+    <Sidebar className="lg:fixed lg:top-20 lg:left-0 lg:h-[calc(100vh-5rem)] lg:w-65 w-full bg-white dark:bg-black shadow-none lg:shadow ">
       <SidebarHeader />
-      <SidebarContent >
+
+      <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel className="text-[18px] ml-3 mb-8 font-normal">
+          <SidebarGroupLabel className="text-[18px] ml-3 mb-8 font-normal dark:text-white">
             Better Taxi
           </SidebarGroupLabel>
 
@@ -137,33 +150,68 @@ export function AppSidebar() {
             <SidebarMenu>
               {items.map((item) => (
                 <SidebarMenuItem key={item.title}>
+                  {/* DROPDOWN MENU */}
                   {item.dropdown ? (
                     <details className="group mb-2">
                       <summary className="flex items-center justify-between gap-2 cursor-pointer py-2 px-2 rounded-md hover:text-blue-800">
-                        <span className="flex items-center gap-2 text-[16px]">
-                          <item.icon className="text-lg" />
+                        <span className="flex items-center gap-2 text-[14px] text-gray-500 dark:text-white">
+                          <item.icon className="text-[14px] dark:text-white" />
                           {item.title}
                         </span>
                         <FiChevronDown className="transition-transform group-open:rotate-180" />
                       </summary>
 
+                      {/* CHILD LINKS */}
                       <div className="ml-6 mt-1">
-                        <ul className="list-disc list-outside space-y-2">
-                          {item.children.map((sub) => (
-                            <li key={sub.title}>
-                              <a href={sub.url} className={`block text-[15px] px-2 py-1 rounded-md hover:text-blue-800 ${pathname === sub.url ? "text-blue-800 font-semibold" : "text-gray-700"}`}>
-                                {sub.title}
-                              </a>
-                            </li>
-                          ))}
+                        <ul className="space-y-2">
+                          {item.children.map((sub) => {
+                            const active = pathname === sub.url;
+                            return (
+                              <li key={sub.title}>
+                                <a
+                                  href={sub.url}
+                                  className={`block px-2 py-1 rounded-md text-[15px] dark:text-white
+                                    ${
+                                      active
+                                        ? "bg-blue-600 text-white font-medium"
+                                        : "text-gray-500 hover:text-blue-700"
+                                    }
+                                  `}
+                                >
+                                  {sub.title}
+                                </a>
+                              </li>
+                            );
+                          })}
                         </ul>
                       </div>
                     </details>
                   ) : (
+                    /* NORMAL SIDEBAR ITEM (NO DROPDOWN) */
                     <SidebarMenuButton asChild>
-                      <a href={item.url} className={`flex items-center gap-2 px-2 py-2 rounded-md transition-colors hover:text-blue-800 ${pathname === item.url ? "bg-blue-600 text-white" : "text-gray-800"}`}>
-                        <item.icon className="text-lg" />
-                        <span className="text-[16px]">{item.title}</span>
+                      <a
+                        href={item.url}
+                        className={`flex items-center gap-2 px-2 py-2 rounded-md transition-colors dark:text-white
+                          ${
+                            pathname === item.url
+                              ? "bg-blue-600 text-white"
+                              : "text-gray-500 hover:text-blue-700"
+                          }
+                        `}
+                      >
+                        <item.icon
+                          className={`text-[14px] dark:text-white${
+                            pathname === item.url ? "text-white" : "text-gray-500"
+                          }`}
+                        />
+
+                        <span
+                          className={`text-[14px] dark:text-white${
+                            pathname === item.url ? "text-white" : "text-gray-500"
+                          }`}
+                        >
+                          {item.title}
+                        </span>
                       </a>
                     </SidebarMenuButton>
                   )}

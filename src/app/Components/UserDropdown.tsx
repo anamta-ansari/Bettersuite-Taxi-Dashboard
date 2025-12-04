@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { IoMdArrowDropdown } from "react-icons/io";
+import {User} from "lucide-react"
 
 export default function UserDropdown() {
   const [open, setOpen] = useState(false);
@@ -12,15 +13,15 @@ export default function UserDropdown() {
       {/* Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-3 bg-gray-50 px-2 py-2 rounded-lg shadow hover:bg-gray-100 transition"
+        className="flex items-center gap-1 bg-gray-50 dark:text-white dark:bg-black dark:border-gray-500 px-2 py-2 rounded-lg  hover:bg-gray-100 transition"
       >
-        <FaUserCircle className="text-3xl text-gray-600" />
+        <User className="text-[14px] text-gray-600 dark:text-white" />
         <div className="text-left leading-tight">
-          <p className="text-sm font-semibold text-gray-800">John Doe</p>
-          <p className="text-xs text-gray-500">Tester</p>
-        </div>
+          <p className="text-sm font-semibold text-gray-800 dark:text-white">John Doe</p>
+          <p className="text-xs text-gray-500 dark:text-white">Tester</p>
+        </div>  
         <IoMdArrowDropdown
-          className={`text-xl text-gray-600 transition-transform duration-200 ${
+          className={`text-xl text-gray-600 transition-transform duration-200 dark:text-gray-400 ${
             open ? "rotate-180" : ""
           }`}
         />
@@ -28,12 +29,12 @@ export default function UserDropdown() {
 
       {/* Dropdown Menu */}
       {open && (
-        <div className="absolute right-0 mt-2 w-25 bg-white border border-gray-200 rounded-lg shadow-lg">
-          <ul className="py-1">
+        <div className="absolute right-0 mt-2 w-25 bg-white  border-gray-200 rounded-lg shadow-lg">
+          <ul className="py-1 dark:text-white dark:bg-gray-800">
             <li>
   <Link
     href="/edit-profile"   // <-- Your desired route
-    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+    className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:text-white dark:bg-gray-800"
   >
     Edit Profile
   </Link>
@@ -41,7 +42,7 @@ export default function UserDropdown() {
             <li>
               <Link
               href="/login"
-                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100"
+                className="block w-full text-left px-4 py-2 text-sm hover:bg-gray-100 dark:text-white dark:bg-gray-800"
                 onClick={() => alert("Logout clicked")}
               >
                 Logout

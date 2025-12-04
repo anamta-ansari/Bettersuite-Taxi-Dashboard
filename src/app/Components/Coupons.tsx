@@ -49,8 +49,6 @@ export default function Coupons() {
       </div>
     </>
   )
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> a403f1b3d8686ebe5d5e375a95b8f3475231ffe8
+
+
